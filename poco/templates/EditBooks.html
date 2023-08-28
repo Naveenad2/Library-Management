@@ -1,0 +1,80 @@
+
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        
+        h1 {
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        .form-group label {
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            font-size: 18px;
+            padding: 10px 30px;
+        }
+        
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
+
+    <div class="container">
+        <h1>Edit Book details</h1>
+        
+        <form action="/saveBookChanges" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{book_obj.book_name}}">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Author name:</label>
+                <input type="text" id="email" name="aname" value="{{book_obj.author_name}}">
+                <input type="text" value="{{book_obj.id}}" id="start_time" name="id" style="display: none";>
+            </div>
+            
+            <div class="form-group">
+                <label for="department">Discription:</label>
+                <input type="text" id="department" name="discription" value="{{book_obj.discription}}">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Page Number:</label>
+                <input type="number" id="phone" name="pno" value="{{book_obj.page_number}}">
+            </div>
+            
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+    {% endblock content %}

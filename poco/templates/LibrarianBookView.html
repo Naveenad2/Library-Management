@@ -1,0 +1,55 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <h5>Search by Book Name</h5>
+    <form method="POST" action="/search_books_by_name" >
+        {% csrf_token %}
+    <input name="book" type="text"></input>
+    <button type="submit" >Search</button>
+</form>
+<h5>Search by Book Author Name</h5>
+<form method="POST" action="/search_books_by_Authoname" >
+    {% csrf_token %}
+<input name="book" type="text"></input>
+<button type="submit" >Search</button>
+</form>
+    <h1>Book Collection</h1>
+    <a href="/admin/poco/books/add"><button class="btn btn-primary">Add books </button></a>
+
+
+    <div class="row">
+
+        {% for books in books %}
+
+        <!-- Book Card 1 -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="/{{books.photo}}" class="card-img-top" alt="Book 1">
+                <div class="card-body">
+                    <h5 class="card-title">{{books.book_name}}</h5>
+                    <a href="/LibrarianViewbookDetails/{{books.id}}"><button class="btn btn-danger">edit book</button></a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+
+        <!-- Add more book cards as needed -->
+
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

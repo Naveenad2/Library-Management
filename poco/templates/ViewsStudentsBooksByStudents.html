@@ -1,0 +1,44 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+ 
+    <h1>Book Sections </h1>
+    <div class="row">
+      
+
+        {% for books in books %}
+
+        <!-- Book Card 1 -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{books.Select_a_book.photo}}" class="card-img-top" alt="Book 1">
+                <div class="card-body">
+                    <h5 class="card-title">{{books.Select_a_book.book_name}}</h5>
+                    <h3 class="card-title">Start Date: {{books.start_date}}</h3>
+                    <h3 class="card-title">End Date: {{books.due_date}}</h3>
+                    <a href="StudentBookView/{{books.Select_a_book.id}}"><button class="btn btn-danger">view Books</button></a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+
+        <!-- Add more book cards as needed -->
+
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

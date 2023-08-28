@@ -1,0 +1,43 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <a href="/ViewsStudentsBooksByStudents"><button class="btn btn-danger">View my books</button></a>
+    <a href="/ViewAllBooks"><button class="btn btn-primary">View All Books</button></a>
+    <h1>Book Sections </h1>
+    <div class="row">
+      
+
+        {% for section in section %}
+
+        <!-- Book Card 1 -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{section.photo}}" class="card-img-top" alt="Book 1">
+                <div class="card-body">
+                    <h5 class="card-title">{{section.sectoin_name}}</h5>
+                    <a href="StudentBookView/{{section.id}}"><button class="btn btn-danger">view Books</button></a>
+                    
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+
+        <!-- Add more book cards as needed -->
+
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
